@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Holly's To-Do List</title>
+  <!-- make sure jquery is on top -->
+  <script src = "http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script>
+  window.onload = init;
+  function init() {
+    $('form').submit(function () {
+      if ($('input').val() !== '') {
+          var newListItem = $('input').val();
+          $('ul').append('<li><a href="">X </a>' + newListItem + '</li>');
+      };
+      $('input').val('');
+      return false;
+    });
+
+    $(document).on('click', 'a', function (e) {
+        e.preventDefault();
+        $(this).parent().remove();
+    });
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Holly's To-Do List</h1>
+  </header>
+
+  <section>
+    <form>
+        <input type="text" id="task" placeholder="task" class= "form_area">
+        <br>
+        <button id="addTask">add</button>
+    </form>
+  </section>
+  <div class = "col-3">
+    <section class = "columns" id = "one">
+      <h2>To Do</h2>
+      <ul id="list"></ul>
+    </section>
+    <!-- <section class = "columns" id = "two">
+      <h2>In Progress</h2>
+    </section>
+    <section class = "columns" id = "three">
+      <h2>Complete</h2>
+    </section> -->
+  </div>
+</body>
+
+</html>
